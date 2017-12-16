@@ -25,10 +25,16 @@
 <input type="hidden" name="_method" value="put"/>
 <input type="submit" value="testPut"/>
 </form>
+获取请求参数
 <form method="post" action="helloworld/testRequestParam">
-id<input type="text" name="id"/>
-name<input type="text" name="name"/>
+id<input type="text" name="id"/><br/>
+name<input type="text" name="name"/><br/>
+city<input type="text" name="address.city"/><br/>
+street<input type="text" name="address.street"/><br/>
 <input type="submit" value="testRequestParam"/>
 </form>
+<a href="helloworld/testRequestHeader">获取请求报头</a><br/>
+<a href="helloworld/testCookieValue">testCookieValue</a><br/>
+<a href="helloworld/testServletAPI">testServletAPI</a>
 </body>
 </html>
