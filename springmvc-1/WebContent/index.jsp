@@ -29,12 +29,22 @@
 <form method="post" action="helloworld/testRequestParam">
 id<input type="text" name="id"/><br/>
 name<input type="text" name="name"/><br/>
+cityid<input type="text" name="address.cityid"/><br/>
 city<input type="text" name="address.city"/><br/>
 street<input type="text" name="address.street"/><br/>
 <input type="submit" value="testRequestParam"/>
 </form>
 <a href="helloworld/testRequestHeader">获取请求报头</a><br/>
 <a href="helloworld/testCookieValue">testCookieValue</a><br/>
-<a href="helloworld/testServletAPI">testServletAPI</a>
+<a href="helloworld/testServletAPI">testServletAPI</a><br/>
+
+<a href="helloworld/testModelAndView">testModelAndView</a><br/>
+<a href="helloworld/testMap">testMap</a><br/>
+<a href="helloworld/testModel">testModel</a><br/>
+<a href="helloworld/testModelMap">testModelMap</a><br/>
+<form action="helloworld/testModelAttribute" method="post">
+street:<input type="text" name="street" value="QX"/><br/>
+<input type="submit" value="UPDATE"/>
+</form>
 </body>
 </html>

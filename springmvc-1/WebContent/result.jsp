@@ -7,12 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-This is success page.<br/>
-from request scope by ModelAndView ${requestScope.name}<br/>
-from request scope by Map ${requestScope.age}<br/>
-from request scope by Model ${requestScope.mail}<br/>
-from request scope by ModelMap ${requestScope.city}<br/>
-from session scope by ModelMap ${sessionScope.city}<br/>
-<a href="result">result</a>
+This is result page.<br/>
+city:${sessionScope.city}
+age:${sessionScope.age}
 </body>
 </html>

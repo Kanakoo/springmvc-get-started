@@ -1,9 +1,22 @@
 package com.springmvc.pojo;
 
 public class Address {
+private int cityid;
 private String city;
 private String street;
-
+public Address() {}
+public Address(int cityid, String city, String street) {
+	super();
+	this.cityid = cityid;
+	this.city = city;
+	this.street = street;
+}
+public int getCityid() {
+	return cityid;
+}
+public void setCityid(int cityid) {
+	this.cityid = cityid;
+}
 public String getCity() {
 	return city;
 }
@@ -18,7 +31,10 @@ public void setStreet(String street) {
 }
 @Override
 public String toString() {
-	return "Address [city=" + city + ", street=" + street + "]";
+	return "Address [cityid=" + cityid + ", city=" + city + ", street=" + street + "]";
 }
+
+
+
 
 }

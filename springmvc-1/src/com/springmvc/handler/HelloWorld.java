@@ -1,20 +1,33 @@
 package com.springmvc.handler;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.stream.events.StartDocument;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.springmvc.pojo.Address;
 import com.springmvc.pojo.User;
 
 @Controller
 @RequestMapping("/helloworld")
+@SessionAttributes(value= {"city","age"})
+//@SessionAttributes(types={String.class}) 但要放置的值必须在模型数据里面
+
 public class HelloWorld {
 /*如果只有一个value属性 可以省略
  * 可以修饰方法 类
@@ -80,6 +93,7 @@ public String testPathVar(@PathVariable(value="id") int id) {
   */
  @RequestMapping(value="/testRequestParam",method=RequestMethod.POST)
  public String testRequestParam(User user) {
+	 //user address不能有相同的成员变量名   address自动生成构造函数时 必须要再写一个无参构造函数 注意jsp级联写法！address.cityid
 	 System.out.println(user);
  	return "success";
  }
@@ -98,6 +112,65 @@ public String testPathVar(@PathVariable(value="id") int id) {
 	 System.out.println(req+" "+res);
  	return "success";
  }
-
+ @RequestMapping(value="/testModelAndView")
+ public ModelAndView testModelAndView() {
+	 ModelAndView mv=new ModelAndView();
+	 //modelandview模型数据的值放到request范围中
+	 mv.setViewName("success");
+	// mv.setView(View view);
+	 mv.addObject("name","Tom");
+	// mv.addAllObjects(Map map)
+ 	return mv;
+ }
+ //常用map
+ @RequestMapping(value="/testMap")
+ public String testMap(Map<String,Object> map) {
+	 map.put("age", 12);
+ 	return "success";
+ }
+ @RequestMapping(value="/testModel")
+ public String testModel(Model model) {
+	 model.addAttribute("mail","xxx@163.com");
+ 	return "success";
+ }
+ @RequestMapping(value="/testModelMap")
+ public String testModelMap(ModelMap modelmap) {
+	 modelmap.addAttribute("city","BJ");
+ 	return "success";
+ }
+ @RequestMapping(value="/result")
+ public String result() {
+ 	return "result";
+ }
+ //保存数据库中查询的原始信息 与更改的合并
+ //修饰无返回值方法
+ @ModelAttribute
+public void start(Map<String, Object> map) {
+	Address address=new Address(32,"NJ","ZJL");
+	map.put("address", address);
+	//key默认为Address的首字母小写格式 否则update函数改为
+	//public String update(@ModelAttribute("abc")Address address) 
+}
+ @RequestMapping(value="/testModelAttribute")
+public String update(Address address) {
+	System.out.println(address);
+	return "success";
+}
  
+ /*
+  * 修饰有参
+ key默认是address 要修改 开头的注解 @ModelAttribute(value="abc") 并且改update函数
+ 
+ @ModelAttribute(value="abc")
+public Address start() {
+	 Address address=new Address(32,"NJ","ZJL");
+	 return address;
+ }
+ @RequestMapping(value="/testModelAttribute")
+public String update(@ModelAttribute("abc")Address address) {
+	System.out.println(address);
+	return "success";
+}
+*/ 
+  
 }
