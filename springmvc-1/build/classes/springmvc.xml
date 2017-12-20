@@ -12,4 +12,20 @@
 <property name="prefix" value="/"></property>
 <property name="suffix" value=".jsp"></property>
 </bean>
+<!-- 两个解析器 两个优先级相同 值越低优先级越高-->
+<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+<property name="order" value="100"></property>
+</bean>
+
+<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+<property name="basename" value="abc"></property>
+</bean>
+
+<!-- 配置了mvc:view-controller之后 其他的控制器 方法的映射都无效 解决方法 加mvc:annotation-driven
+访问 http://localhost:8080/springmvc-1/abcdefg
+-->
+<mvc:view-controller path="/abcdefg" view-name="a"/>
+<mvc:view-controller path="/zdyst" view-name="myView"/>
+<mvc:annotation-driven></mvc:annotation-driven>
+
 </beans>

@@ -172,5 +172,9 @@ public String update(@ModelAttribute("abc")Address address) {
 	return "success";
 }
 */ 
-  
+ @RequestMapping(value="/testJSTLView")
+ public String testJSTLView() {
+ 	return "a";//访问 http://localhost:8080/springmvc-1/helloworld/testJSTLView
+ }
+
 }
