@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="allEmps">LIST ALL EMPLOYEE</a>
-<a href=""></a>
+<a href="allEmps">LIST ALL EMPLOYEE</a><br/>
+<a href="input">ADD THE EMPLOYEE</a>
 </body>
 </html>

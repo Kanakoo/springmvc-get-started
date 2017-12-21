@@ -4,10 +4,10 @@ public class Employee {
 private int id;
 private String name;
 private String mail;
-private String gender;
+private int gender;
 private Department department;
 public Employee() {}
-public Employee(int id, String name, String mail, String gender, Department department) {
+public Employee(int id, String name, String mail, int gender, Department department) {
 	super();
 	this.id = id;
 	this.name = name;
@@ -33,10 +33,10 @@ public String getMail() {
 public void setMail(String mail) {
 	this.mail = mail;
 }
-public String getGender() {
+public int getGender() {
 	return gender;
 }
-public void setGender(String gender) {
+public void setGender(int gender) {
 	this.gender = gender;
 }
 public Department getDepartment() {

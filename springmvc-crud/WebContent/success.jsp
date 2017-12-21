@@ -15,15 +15,16 @@
 <h3 align="center">THE EMPLOYEES LIST</h3>
 <table width="500px" border="1" align="center">
 <tr>
-<td>ID</td><td>NAME</td><td>MAIL</td><td>GENDER</td><td>DEPTNAME</td>
+<td>ID</td><td>NAME</td><td>MAIL</td><td>GENDER</td><td>DEPTNAME</td><td>DELETE</td>
 </tr>
 <c:forEach items="${requestScope.emps }" var="emp">
 <tr>
 <td>${emp.id}</td>
 <td>${emp.name }</td>
 <td>${emp.mail }</td>
-<td>${emp.gender }</td><!-- ${emp.gender==0?"boy:"girl"} -->
+<td>${emp.gender==0?"boy":"girl"}</td>
 <td>${emp.department.depName }</td>
+<td><a href="#">DELETE</a></td>
 </tr></c:forEach>
 </table>
 </c:if>
