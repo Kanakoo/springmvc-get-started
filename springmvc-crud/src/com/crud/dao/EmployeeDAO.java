@@ -11,7 +11,7 @@ public class EmployeeDAO {
 private static Map<Integer,Employee> emps;
 static {
 	emps=new HashMap<Integer,Employee>();
-	emps.put(101, new Employee(101,"Tom","tom@xxx.com",0,DepartmentDAO.getDeptById(2)));
+	emps.put(101, new Employee(101,"Tom","Tom@xxx.com",0,DepartmentDAO.getDeptById(2)));
 	emps.put(102, new Employee(102,"Mary","Mary@xxx.com",1,DepartmentDAO.getDeptById(2)));
 	emps.put(103, new Employee(103,"Jane","Jane@xxx.com",1,DepartmentDAO.getDeptById(1)));
 	emps.put(104, new Employee(104,"Bob","Bob@xxx.com",0,DepartmentDAO.getDeptById(2)));
@@ -23,9 +23,19 @@ public static Collection<Employee> getAllEmps() {
 	return emps.values();
 }
 private static int key=106;
-public static void save(Employee e) {
+public static void add(Employee e) {
 	e.setId(key);
 	e.setDepartment(DepartmentDAO.getDeptById(e.getDepartment().getDepId()));
 	emps.put(key++, e);
+}
+public static void delete(int id) {
+	emps.remove(id);
+}
+public static Employee getEmpById(int id) {
+	return emps.get(id);
+}
+public static void update(int id,Employee e) {
+	e.setDepartment(DepartmentDAO.getDeptById(e.getDepartment().getDepId()));
+	emps.put(id, e);
 }
 }
