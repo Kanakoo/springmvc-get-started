@@ -11,7 +11,12 @@ public class testHandler {
 	//String->User 写一个类型转换器 Converter<S,T>原类型 目标类型  ConverterFactory GenericConverter
 @RequestMapping("/testConversionService")
 public String testConversionService(User user) {
-	System.out.println(user.getName()+" "+user.getAge());
+	System.out.println(user);
+	return "success";
+}
+@RequestMapping("/testFormat")
+public String testFormat(User user) {
+	System.out.println(user);
 	return "success";
 }
 }
