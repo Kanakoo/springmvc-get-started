@@ -5,6 +5,9 @@ import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -49,9 +52,21 @@ public String delete(@PathVariable("id")int id) {
 	EmployeeDAO.delete(id);
 	return "redirect:/allEmps";
 }
+@ModelAttribute
+public void attri(Integer id,Map<String,Object> map) {
+	if(id!=null) {//这里为什么id必须为integer 不能是int
+		Employee e=EmployeeDAO.getEmpById(id);
+		map.put("employee", e);
+	}
+	
+}
 @RequestMapping(value="/update",method=RequestMethod.PUT)
 public String update(Employee e) {
 	EmployeeDAO.update(e.getId(), e);
 	return "redirect:/allEmps";
+}
+@InitBinder
+public void testInitBinder(WebDataBinder binder) {
+	binder.setDisallowedFields("name");//不能改变name属性
 }
 }

@@ -12,6 +12,16 @@
 <property name="prefix" value="/"></property>
 <property name="suffix" value=".jsp"></property>
 </bean>
-<!--<mvc:default-servlet-handler/>让dispatcherservlet失效-->
-<!--<mvc:annotation-driven></mvc:annotation-driven>-->
+<mvc:default-servlet-handler/><!--让dispatcherservlet失效-->
+<!-- 告知springmvc转换器 -->
+<mvc:annotation-driven conversion-service="ConversionService"></mvc:annotation-driven>
+<!-- 注册类型转换器 -->
+<bean id="ConversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+<property name="converters">
+<set>
+<bean class="com.crud.Converter.StringToUserConverter"></bean>
+</set>
+</property>
+</bean>
+
 </beans>

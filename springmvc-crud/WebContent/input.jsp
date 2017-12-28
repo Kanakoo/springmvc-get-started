@@ -19,7 +19,9 @@
 <table>
 <tr><td>NAME</td><td><form:input path="name"/></td></tr>
 <tr><td>MAIL</td><td><form:input path="mail"/></td></tr>
+<c:if test="${e.id==0 }">
 <tr><td>GENDER</td><td><form:radiobuttons path="gender" items="${requestScope.genders }"/></td></tr>
+</c:if>
 <tr><td>DEPARTMENT</td><td>
 <form:select path="department.depId" items="${requestScope.depts }" itemLabel="depName" itemValue="depId"></form:select>
 </td></tr>
